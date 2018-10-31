@@ -1,0 +1,103 @@
+<html>
+
+<head>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script>
+        System.defaultJSExtensions = true;
+        System.config({
+            baseURL: "./build"
+        });
+
+        System.import("main");
+    </script>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+        }
+
+        .left_pane,
+        .right_pane {
+            flex-grow: 1;
+        }
+
+        .buttons {
+            background-color: #222;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        .editor {
+            display: flex;
+        }
+
+        .editor_main {
+            flex-grow: 1;
+            min-height: 100%;
+            background-color: #333;
+            color: red;
+        }
+
+        .line_numbers {
+            width: 45px;
+            min-height: 100%;
+            text-align: right;
+            background-color: #222;
+            color: red;
+            padding-right: 15px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        .APP_LOG {
+            resize: none;
+            width: 100%;
+            height: 100ch;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left_pane">
+        <div class="buttons">
+            <button class="APP_BTN">run</button>
+            <button class="APP_BTN">run&debug</button>
+            <button class="APP_BTN">debug</button>
+            <button class="APP_BTN">step</button>
+        </div>
+        <div class="editor">
+            <div class="line_numbers"></div>
+            <div class="editor_main">
+                <div contenteditable="true" class="fill editable_code"></div>
+            </div>
+        </div>
+    </div>
+    <div class="right_pane">
+        <div class="top_right_pane">
+            <table>
+
+            </table>
+        </div>
+        <div class="bottom_right_pane">
+            <textarea class="APP_LOG"></textarea>
+        </div>
+    </div>
+    <!-- 
+        the following are referenced in code
+        APP_LOG
+        editable_code
+        line_numbers
+        APP_BTN
+        the one table element
+
+        everything else is disposable
+    -->
+</body>
+
+</html>
